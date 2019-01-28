@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:inputType="date"
+                android:text="00-00-0000" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="next" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="previous" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="211dp"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="1dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/newActName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/activity" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/buttonAddAct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/add_activity"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="253dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SaveData" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:text="Details"
+                        tools:layout_editor_absoluteX="286dp"
+                        tools:layout_editor_absoluteY="4dp" />
+
+                    <LinearLayout
+                        android:layout_width="62dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/buttonMinus"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="-"
+                            tools:layout_editor_absoluteX="237dp"
+                            tools:layout_editor_absoluteY="52dp" />
+
+                        <Button
+                            android:id="@+id/buttonPlus"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="+"
+                            tools:layout_editor_absoluteX="237dp"
+                            tools:layout_editor_absoluteY="4dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="269dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:gravity="center"
+                            android:text="@string/activityname"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            tools:layout_editor_absoluteX="16dp"
+                            tools:layout_editor_absoluteY="4dp" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar2"
+                            style="@style/Widget.AppCompat.SeekBar.Discrete"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:clickable="false"
+                            android:max="48"
+                            android:progress="5"
+                            android:focusable="false"
+                            android:longClickable="false"
+                            tools:layout_editor_absoluteX="15dp"
+                            tools:layout_editor_absoluteY="44dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

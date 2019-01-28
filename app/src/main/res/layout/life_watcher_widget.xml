@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#09C"
+    android:padding="@dimen/widget_margin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:text="Details"
+                    tools:layout_editor_absoluteX="286dp"
+                    tools:layout_editor_absoluteY="4dp" />
+
+                <LinearLayout
+                    android:layout_width="62dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/buttonMinus"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="-"
+                        tools:layout_editor_absoluteX="237dp"
+                        tools:layout_editor_absoluteY="52dp" />
+
+                    <Button
+                        android:id="@+id/buttonPlus"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="+"
+                        tools:layout_editor_absoluteX="237dp"
+                        tools:layout_editor_absoluteY="4dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="269dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:text="@string/activityname"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="4dp" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar2"
+                        style="@style/Widget.AppCompat.SeekBar.Discrete"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:max="48"
+                        android:progress="5"
+                        tools:layout_editor_absoluteX="15dp"
+                        tools:layout_editor_absoluteY="44dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

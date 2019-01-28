@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LifeWatcher</string>
+    <string name="activity">Activity</string>
+    <string name="add_activity">Add activity</string>
+    <string name="activityname">ActivityName</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="configure">Configure</string>
+</resources>
