@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText3;
     private Button buttonPlus;
     private Button buttonMinus;
+    private Button buttonDB;
+    private Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         calendar.set(Calendar.DAY_OF_MONTH,time.monthDay);
         button2 = findViewById(R.id.button2);
         button = findViewById(R.id.button);
+        buttonDB = findViewById(R.id.buttonDB);
+        spinner = findViewById(R.id.spinner);
         editText = findViewById(R.id.editText);
         editText.setText(time.monthDay+"-"+(time.month+1)+"-"+time.year);
         button2.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +68,15 @@ public class MainActivity extends AppCompatActivity {
                 //todo fill data from database
             }
         });
-
+        buttonDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(spinner.getVisibility()==View.INVISIBLE)
+                    spinner.setVisibility(View.VISIBLE);
+                else
+                    spinner.setVisibility(View.INVISIBLE);
+            }
+        });
         /// TO BE DEPRECIATED cause of RecyclerView
         seekBar = findViewById(R.id.seekBar2);
         buttonDetails = findViewById(R.id.buttonDetails);

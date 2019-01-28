@@ -80,6 +80,12 @@
             android:layout_height="wrap_content"
             android:text="SaveData" />
 
+        <Button
+            android:id="@+id/buttonDB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="show database" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -167,9 +173,10 @@
             android:ems="10"
             android:inputType="textMultiLine" />
 
-        <android.support.v7.widget.RecyclerView
+        <Spinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
