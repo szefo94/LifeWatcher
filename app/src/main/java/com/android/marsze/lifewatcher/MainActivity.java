@@ -1,18 +1,24 @@
 package com.android.marsze.lifewatcher;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.drawable.Animatable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -27,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 //    Button minus = child.findViewById(R.id.btn_minus);
     private Button button;
     private Button button2;
+    private Button buttonSave;
     private EditText editText;
     private SeekBar seekBar;
     private Button buttonDetails;
@@ -34,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonPlus;
     private Button buttonMinus;
     private Button buttonDB;
-    private Spinner spinner;
+    private GridView dynamic;
+    DatabaseHelper mDatabaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mDatabaseHelper = new DatabaseHelper(this);
         final Time time = new Time(Time.getCurrentTimezone());
         time.setToNow();
         final Calendar calendar = Calendar.getInstance();
@@ -47,10 +55,11 @@ public class MainActivity extends AppCompatActivity {
         calendar.set(Calendar.MONTH,time.month);
         calendar.set(Calendar.DAY_OF_MONTH,time.monthDay);
         button2 = findViewById(R.id.button2);
+        buttonSave = findViewById(R.id.buttonSave);
         button = findViewById(R.id.button);
         buttonDB = findViewById(R.id.buttonDB);
-        spinner = findViewById(R.id.spinner);
         editText = findViewById(R.id.editText);
+        dynamic = findViewById(R.id.dynamic);
         editText.setText(time.monthDay+"-"+(time.month+1)+"-"+time.year);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,16 +77,44 @@ public class MainActivity extends AppCompatActivity {
                 //todo fill data from database
             }
         });
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newEntry = editText.getText().toString();
+                if (editText.length() != 0) {
+                    AddData(newEntry);
+                    editText.setText("");
+                } else {
+                    toastMessage("You must put something in the text field!");
+                }
+                Cursor data = mDatabaseHelper.getData();
+                ArrayList<String> listData = new ArrayList<>();
+                while(data.moveToNext()){
+                    //get the value from the database in column 1
+                    //then add it to the ArrayList
+                    listData.add(data.getString(1));
+                    //ListAdapter adapter = new ArrayAdapter<String>();
+                    //ListAdapter adapter = new ArrayAdapter<>(this,R.layout.)
+                    //listView.setAdapter(adapter);
+                    for(int i=0;i<listData.size();i++)
+                    editText3.setText(editText3.getText()+"\n"+i+" "+listData.get(i));
+
+                }
+            }
+        });
         buttonDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(spinner.getVisibility()==View.INVISIBLE)
-                    spinner.setVisibility(View.VISIBLE);
+                if(dynamic.getVisibility()==View.INVISIBLE)
+                    dynamic.setVisibility(View.VISIBLE);
                 else
-                    spinner.setVisibility(View.INVISIBLE);
+                    dynamic.setVisibility(View.INVISIBLE);
+
             }
         });
-        /// TO BE DEPRECIATED cause of RecyclerView
+
+
+        // TODO DEPRECIATED cause of RecyclerView
         seekBar = findViewById(R.id.seekBar2);
         buttonDetails = findViewById(R.id.buttonDetails);
         editText3 = findViewById(R.id.editText3);
@@ -109,4 +146,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void AddData(String newEntry){
+        boolean insertData = mDatabaseHelper.addData(newEntry);
+
+        if (insertData) {
+            toastMessage("Data Successfully Inserted!");
+        } else {
+            toastMessage("Something went wrong");
+        }
+    }
+
+    private void toastMessage(String message){
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
+    }
+
+
 }

@@ -75,7 +75,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/buttonSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SaveData" />
@@ -173,10 +173,10 @@
             android:ems="10"
             android:inputType="textMultiLine" />
 
-        <Spinner
-            android:id="@+id/spinner"
+        <GridView
+            android:id="@+id/dynamic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
