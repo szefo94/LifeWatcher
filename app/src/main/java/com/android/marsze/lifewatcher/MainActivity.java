@@ -5,7 +5,10 @@ import android.database.Cursor;
 import android.graphics.drawable.Animatable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button2;
     private Button buttonSave;
     private EditText editText;
+    private EditText newActName;
     private SeekBar seekBar;
     private Button buttonDetails;
     private EditText editText3;
@@ -70,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddAct = findViewById(R.id.buttonAddAct);
         buttonDB = findViewById(R.id.buttonDB);
         editText = findViewById(R.id.editText);
-
+        newActName = findViewById(R.id.newActName);
         textView = findViewById(R.id.textView);
         editText.setText(time.monthDay+"-"+(time.month+1)+"-"+time.year);
         button2.setOnClickListener(new View.OnClickListener() {
@@ -124,13 +128,15 @@ public class MainActivity extends AppCompatActivity {
         buttonAddAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //mDatabaseHelper.deleteTab();
+                mActNames.add(newActName.getText().toString());
+                initRecyclerView();
             }
         });
         buttonDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Cursor data = mDatabaseHelper.wipeData();
+                //Cursor data = mDatabaseHelper.wipeData();
+                //mDatabaseHelper.deleteTab();
             }
         });
 
@@ -177,7 +183,14 @@ public class MainActivity extends AppCompatActivity {
             toastMessage("Something went wrong");
         }
     }
+    private void initRecyclerView(){
+        //Log.d(TAG, "initRecyclerView: init recyclerview.");
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mActNames, mProgresBars,mDetailsButtons,mPlusButtons,mMinusButtons);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+    }
     private void toastMessage(String message){
         Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
