@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonDetails"
+                tools:layout_editor_absoluteX="286dp"
+                tools:layout_editor_absoluteY="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:text="Details" />
+
+            <LinearLayout
+                android:layout_width="62dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonMinus"
+                    tools:layout_editor_absoluteX="237dp"
+                    tools:layout_editor_absoluteY="52dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="-" />
+
+                <Button
+                    android:id="@+id/buttonPlus"
+                    tools:layout_editor_absoluteX="237dp"
+                    tools:layout_editor_absoluteY="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="+" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="269dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    tools:layout_editor_absoluteX="16dp"
+                    tools:layout_editor_absoluteY="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="@string/activityname"
+                    android:textAlignment="center"
+                    android:textAllCaps="true" />
+
+                <SeekBar
+                    android:id="@+id/seekBar2"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    tools:layout_editor_absoluteX="15dp"
+                    tools:layout_editor_absoluteY="44dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:longClickable="false"
+                    android:max="48"
+                    android:progress="5" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

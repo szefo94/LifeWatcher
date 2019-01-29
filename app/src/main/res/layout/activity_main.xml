@@ -84,7 +84,7 @@
             android:id="@+id/buttonDB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="delete database" />
+            android:text="wipe data" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -173,8 +173,7 @@
             android:ems="10"
             android:inputType="textMultiLine" />
 
-        <GridView
-            android:id="@+id/dynamic"
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

@@ -44,10 +44,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Button buttonDB;
     private Button buttonAddAct;
-    private GridView dynamic;
     DatabaseHelper mDatabaseHelper;
 
-
+    private ArrayList<String> mActNames = new ArrayList<>();
+    private ArrayList<String> mProgresBars = new ArrayList<>();
+    private ArrayList<String> mDetailsButtons = new ArrayList<>();
+    private ArrayList<String> mPlusButtons = new ArrayList<>();
+    private ArrayList<String> mMinusButtons = new ArrayList<>();
 
 
     @Override
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAddAct = findViewById(R.id.buttonAddAct);
         buttonDB = findViewById(R.id.buttonDB);
         editText = findViewById(R.id.editText);
-        dynamic = findViewById(R.id.dynamic);
+
         textView = findViewById(R.id.textView);
         editText.setText(time.monthDay+"-"+(time.month+1)+"-"+time.year);
         button2.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                     editText3.setText("");
                     for(int i=0;i<listData.size();i++)
                     editText3.setText(editText3.getText()+"\n"+i+" "+listData.get(i));
-
                 }
             }
         });
@@ -128,10 +130,6 @@ public class MainActivity extends AppCompatActivity {
         buttonDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(dynamic.getVisibility()==View.INVISIBLE)
-                    dynamic.setVisibility(View.VISIBLE);
-                else
-                    dynamic.setVisibility(View.INVISIBLE);
                 Cursor data = mDatabaseHelper.wipeData();
             }
         });
