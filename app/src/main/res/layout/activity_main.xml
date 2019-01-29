@@ -84,7 +84,7 @@
             android:id="@+id/buttonDB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="show database" />
+            android:text="delete database" />
 
         <ScrollView
             android:layout_width="match_parent"

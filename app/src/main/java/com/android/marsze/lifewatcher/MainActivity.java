@@ -16,6 +16,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -40,9 +41,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText3;
     private Button buttonPlus;
     private Button buttonMinus;
+    private TextView textView;
     private Button buttonDB;
+    private Button buttonAddAct;
     private GridView dynamic;
     DatabaseHelper mDatabaseHelper;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +64,11 @@ public class MainActivity extends AppCompatActivity {
         button2 = findViewById(R.id.button2);
         buttonSave = findViewById(R.id.buttonSave);
         button = findViewById(R.id.button);
+        buttonAddAct = findViewById(R.id.buttonAddAct);
         buttonDB = findViewById(R.id.buttonDB);
         editText = findViewById(R.id.editText);
         dynamic = findViewById(R.id.dynamic);
+        textView = findViewById(R.id.textView);
         editText.setText(time.monthDay+"-"+(time.month+1)+"-"+time.year);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,15 +83,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 calendar.add(Calendar.DAY_OF_MONTH,-1);
                 editText.setText(calendar.get(Calendar.DAY_OF_MONTH)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.YEAR));
+
+
                 //todo fill data from database
             }
         });
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newEntry = editText.getText().toString();
+                //String newEntry = editText.getText().toString();
                 if (editText.length() != 0) {
-                    AddData(newEntry);
+                    AddData(calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.MONTH)+1,calendar.get(Calendar.YEAR),textView.getText().toString(),"details",seekBar.getProgress());
                     editText.setText("");
                 } else {
                     toastMessage("You must put something in the text field!");
@@ -93,13 +104,25 @@ public class MainActivity extends AppCompatActivity {
                     //get the value from the database in column 1
                     //then add it to the ArrayList
                     listData.add(data.getString(1));
+                    listData.add(data.getString(2));
+                    listData.add(data.getString(3));
+                    listData.add(data.getString(4));
+                    listData.add(data.getString(5));
+                    listData.add(data.getString(6));
                     //ListAdapter adapter = new ArrayAdapter<String>();
                     //ListAdapter adapter = new ArrayAdapter<>(this,R.layout.)
                     //listView.setAdapter(adapter);
+                    editText3.setText("");
                     for(int i=0;i<listData.size();i++)
                     editText3.setText(editText3.getText()+"\n"+i+" "+listData.get(i));
 
                 }
+            }
+        });
+        buttonAddAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //mDatabaseHelper.deleteTab();
             }
         });
         buttonDB.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     dynamic.setVisibility(View.VISIBLE);
                 else
                     dynamic.setVisibility(View.INVISIBLE);
-
+                Cursor data = mDatabaseHelper.wipeData();
             }
         });
 
@@ -147,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void AddData(String newEntry){
-        boolean insertData = mDatabaseHelper.addData(newEntry);
+    public void AddData(int dayOfMonth, int month, int year, String text, String details, int progress){
+        boolean insertData = mDatabaseHelper.addData(dayOfMonth,month,year,text,details,progress);
 
         if (insertData) {
             toastMessage("Data Successfully Inserted!");
