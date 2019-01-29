@@ -18,8 +18,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL6 = "details";
     private static final String COL7 = "bar_value";
 
-
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -70,11 +68,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         return data;
     }
-//    public void deleteTab(){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        db.execSQL("DROP TABLE "+ TABLE_NAME);
-//
-//    }
+    public void deleteTab(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE "+ TABLE_NAME);
+
+    }
     public Cursor wipeData(){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;

@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         buttonDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Cursor data = mDatabaseHelper.wipeData();
+                Cursor data = mDatabaseHelper.wipeData();
                 //mDatabaseHelper.deleteTab();
             }
         });

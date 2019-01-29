@@ -25,7 +25,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> mMinusButtons = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(Context mContext, ArrayList<String> mActNames, ArrayList<String> mProgresBars, ArrayList<String> mDetailsButtons, ArrayList<String> mPlusButtons, ArrayList<String> mMinusButtons) {
+    public RecyclerViewAdapter(
+            Context mContext,
+            ArrayList<String> mActNames,
+            ArrayList<String> mProgresBars,
+            ArrayList<String> mDetailsButtons,
+            ArrayList<String> mPlusButtons,
+            ArrayList<String> mMinusButtons) {
         this.mActNames = mActNames;
         this.mProgresBars = mProgresBars;
         this.mDetailsButtons = mDetailsButtons;
