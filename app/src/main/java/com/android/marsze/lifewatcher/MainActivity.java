@@ -3,6 +3,8 @@ package com.android.marsze.lifewatcher;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.drawable.Animatable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> mMinusButtons = new ArrayList<>();
 
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
